@@ -1,6 +1,7 @@
 // https://reactrouter.com/en/main/start/tutorial
 import {
   createBrowserRouter,
+  redirect,
   RouterProvider,
   useLoaderData,
 } from "react-router-dom";
@@ -13,16 +14,23 @@ const Test = () => {
 
   return <div>Test</div>;
 };
-const ErrorPage = () => <div>ErrorPage</div>;
 
-// todo: loading data
 // https://reactrouter.com/en/main/start/tutorial#loading-data
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Test />,
-    errorElement: <ErrorPage />,
-    loader: async () => await exchangeRatesLoader(),
+    children: [
+      {
+        path: "*",
+        loader: async () => redirect("/home"),
+      },
+      {
+        path: "/home",
+        element: <Test />,
+        loader: async () => await exchangeRatesLoader(),
+      },
+    ],
   },
 ]);
 
