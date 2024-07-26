@@ -1,33 +1,24 @@
-// https://reactrouter.com/en/main/start/tutorial
 import {
   createBrowserRouter,
   redirect,
   RouterProvider,
-  useLoaderData,
 } from "react-router-dom";
 import { exchangeRatesLoader } from "../api/exchangeRates/useExchangeRates";
+import ExchangeRatesView from "../components/page-specific/exchange-rates-list/ExchangeRatesView";
 
-const Test = () => {
-  const loadedData = useLoaderData();
-
-  console.log(loadedData);
-
-  return <div>Test</div>;
-};
-
-// https://reactrouter.com/en/main/start/tutorial#loading-data
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Test />,
+    element: <ExchangeRatesView />,
+    loader: async () => await exchangeRatesLoader(),
     children: [
       {
         path: "*",
-        loader: async () => redirect("/home"),
+        loader: async () => redirect("/exchange-rates"),
       },
       {
-        path: "/home",
-        element: <Test />,
+        path: "/exchange-rates",
+        element: <ExchangeRatesView />,
         loader: async () => await exchangeRatesLoader(),
       },
     ],
