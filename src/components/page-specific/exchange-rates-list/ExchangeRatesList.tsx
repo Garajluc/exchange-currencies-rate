@@ -9,7 +9,11 @@ const ExchangeRatesList = ({ exchangeRatesData }: ExchangeRatesListProps) => {
     <div>
       {exchangeRatesData &&
         exchangeRatesData?.map((exchangeRateData) => {
-          return <div>{exchangeRateData.currency}</div>;
+          return (
+            <div key={exchangeRateData.currency}>
+              {exchangeRateData.currency}
+            </div>
+          );
         })}
     </div>
   );

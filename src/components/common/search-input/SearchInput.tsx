@@ -1,11 +1,12 @@
 import { InputAdornment, OutlinedInput } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-type OmniSearchProps = {
+interface SearchInputProps {
+  value: string;
   onChange: (value: string) => void;
-};
+}
 
-const OmniSearch = ({ onChange }: OmniSearchProps) => {
+const SearchInput = ({ value, onChange }: SearchInputProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };
@@ -13,6 +14,7 @@ const OmniSearch = ({ onChange }: OmniSearchProps) => {
   return (
     <OutlinedInput
       size="small"
+      value={value}
       onChange={handleChange}
       startAdornment={
         <InputAdornment position="start" sx={{ mr: 1 }}>
@@ -23,4 +25,4 @@ const OmniSearch = ({ onChange }: OmniSearchProps) => {
   );
 };
 
-export default OmniSearch;
+export default SearchInput;

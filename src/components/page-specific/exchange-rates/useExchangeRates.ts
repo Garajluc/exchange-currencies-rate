@@ -9,7 +9,7 @@ interface HookReturn<ItemType> {
   handleSearch: (value: string) => void;
 }
 
-const useExchangeRatesList = <ItemType>({
+const useExchangeRates = <ItemType>({
   listData,
 }: HookProps<ItemType>): HookReturn<ItemType> => {
   const { filteredData, handleSearch } = useOmniListSearch({
@@ -23,4 +23,4 @@ const useExchangeRatesList = <ItemType>({
   };
 };
 
-export default useExchangeRatesList;
+export default useExchangeRates;

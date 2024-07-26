@@ -3,8 +3,8 @@ import {
   redirect,
   RouterProvider,
 } from "react-router-dom";
-import { exchangeRatesLoader } from "../api/exchangeRates/useExchangeRates";
-import ExchangeRatesView from "../components/page-specific/exchange-rates-list/ExchangeRatesView";
+import { exchangeRatesLoader } from "../api/exchangeRates/ExchangeRatesService";
+import ExchangeRatesView from "../components/page-specific/exchange-rates/ExchangeRatesView";
 
 export const router = createBrowserRouter([
   {
