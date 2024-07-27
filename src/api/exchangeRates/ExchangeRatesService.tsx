@@ -11,3 +11,20 @@ export const exchangeRatesLoader =
       .catch((err) => console.log(err));
     return data;
   };
+
+export const flagsLoader = async (): Promise<void | string[]> => {
+  const data = await axios
+    .get("./flags")
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+  return data;
+};
+
+export const loader = async () => {
+  const exchangeRatesData = await exchangeRatesLoader();
+  const flagsData = await flagsLoader();
+  return {
+    exchangeRatesData,
+    flagsData,
+  };
+};

@@ -3,14 +3,14 @@ import {
   redirect,
   RouterProvider,
 } from "react-router-dom";
-import { exchangeRatesLoader } from "../api/exchangeRates/ExchangeRatesService";
+import { loader } from "../api/exchangeRates/ExchangeRatesService";
 import ExchangeRatesView from "../components/page-specific/exchange-rates/ExchangeRatesView";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <ExchangeRatesView />,
-    loader: async () => await exchangeRatesLoader(),
+    loader: loader,
     children: [
       {
         path: "*",
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
       {
         path: "/exchange-rates",
         element: <ExchangeRatesView />,
-        loader: async () => await exchangeRatesLoader(),
+        loader: loader,
       },
     ],
   },

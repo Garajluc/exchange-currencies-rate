@@ -5,10 +5,13 @@ import useExchangeRates from "./useExchangeRates";
 import QuerySearchInput from "../../common/query-search-input/QuerySearchInput";
 
 const ExchangeRatesView = () => {
-  const exchangeRatesData = useLoaderData() as ExchangeRatesRoot;
+  const loadedData = useLoaderData() as {
+    exchangeRatesData: ExchangeRatesRoot;
+    flagData: string[];
+  };
 
   const { filteredData, handleSearch } = useExchangeRates({
-    listData: exchangeRatesData.fx,
+    listData: loadedData.exchangeRatesData.fx,
   });
 
   return (
