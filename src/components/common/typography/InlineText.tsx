@@ -1,20 +1,20 @@
 import { Typography } from "@mui/material";
 import type { Palette } from "@mui/material";
 
-interface ElementSubHeaderProps {
+interface InlineTextProps {
   children: React.ReactNode;
   colorVariant?: keyof Palette;
 }
 
-const ElementSubHeader = ({
+const InlineText = ({
   children,
   colorVariant = "primary",
-}: ElementSubHeaderProps) => {
+}: InlineTextProps) => {
   return (
-    <Typography variant="h5" display="inline" color={colorVariant}>
+    <Typography variant="body1" display="inline" color={colorVariant}>
       {children}
     </Typography>
   );
 };
 
-export default ElementSubHeader;
+export default InlineText;

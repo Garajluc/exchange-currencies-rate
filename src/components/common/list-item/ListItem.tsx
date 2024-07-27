@@ -1,5 +1,5 @@
 import type { BoxProps } from "@mui/material";
-import { Box, styled } from "@mui/material";
+import { Box, Grid, styled } from "@mui/material";
 
 interface ListItemProps {
   ImageComponent: () => JSX.Element;
@@ -7,10 +7,13 @@ interface ListItemProps {
   LeftComponent: () => JSX.Element;
 }
 
-// https://mui.com/material-ui/customization/how-to-customize/#2-reusable-component
-const ListItemBox = styled(Box)<BoxProps>(({ theme }) => ({
-  width: 300,
-  background: "lightBlue",
+const ListItemBox = styled(Box)<BoxProps>(() => ({
+  width: "75%",
+  maxWidth: 950,
+  height: 100,
+  padding: "10px 20px",
+  borderRadius: 15,
+  background: "#faf4ff",
 }));
 
 const ListItem = ({
@@ -20,9 +23,35 @@ const ListItem = ({
 }: ListItemProps) => {
   return (
     <ListItemBox>
-      <ImageComponent />
-      <RightComponent />
-      <LeftComponent />
+      <Grid
+        container
+        alignContent="center"
+        sx={{ height: "100%" }}
+        wrap="nowrap"
+      >
+        <Grid
+          container
+          item
+          justifyContent="center"
+          alignContent="center"
+          sx={{ width: 250 }}
+        >
+          <ImageComponent />
+        </Grid>
+        <Grid
+          item
+          container
+          justifyContent="space-between"
+          alignContent="center"
+        >
+          <Grid item alignContent="center">
+            <RightComponent />
+          </Grid>
+          <Grid item alignContent="center">
+            <LeftComponent />
+          </Grid>
+        </Grid>
+      </Grid>
     </ListItemBox>
   );
 };
