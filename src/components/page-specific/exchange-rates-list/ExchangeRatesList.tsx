@@ -1,9 +1,9 @@
 import { List, ListItem } from "@mui/material";
-import type { Currency } from "../../../api/exchangeRates/exchangeRates.types";
+import type { CurrencyWithFlag } from "../../../api/exchangeRates/exchangeRates.types";
 import ExchangeRateCard from "../exchange-rate-card/ExchangeRateCard";
 
 interface ExchangeRatesListProps {
-  exchangeRatesData: Currency[] | null | undefined;
+  exchangeRatesData: CurrencyWithFlag[] | null | undefined;
 }
 
 const ExchangeRatesList = ({ exchangeRatesData }: ExchangeRatesListProps) => {

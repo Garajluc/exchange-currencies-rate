@@ -1,18 +1,9 @@
-import { useLoaderData } from "react-router-dom";
 import ExchangeRatesList from "../exchange-rates-list/ExchangeRatesList";
-import type { ExchangeRatesRoot } from "../../../api/exchangeRates/exchangeRates.types";
 import useExchangeRates from "./useExchangeRates";
 import QuerySearchInput from "../../common/query-search-input/QuerySearchInput";
 
 const ExchangeRatesView = () => {
-  const loadedData = useLoaderData() as {
-    exchangeRatesData: ExchangeRatesRoot;
-    flagData: string[];
-  };
-
-  const { filteredData, handleSearch } = useExchangeRates({
-    listData: loadedData.exchangeRatesData.fx,
-  });
+  const { filteredData, handleSearch } = useExchangeRates();
 
   return (
     <>

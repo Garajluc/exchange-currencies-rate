@@ -31,3 +31,11 @@ export interface BanknoteRate {
   indicator: number;
   lastModified: string;
 }
+
+export interface ExchangeRatesRootWithFlags extends ExchangeRatesRoot {
+  fx: CurrencyWithFlag[];
+}
+
+export interface CurrencyWithFlag extends Currency {
+  flagPath: string;
+}

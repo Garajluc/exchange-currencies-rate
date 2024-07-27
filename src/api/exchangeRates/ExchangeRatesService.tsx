@@ -1,5 +1,9 @@
 import axios from "axios";
 import type { ExchangeRatesRoot } from "./exchangeRates.types";
+import {
+  removeInvalidCurrencyData,
+  mergeFlags,
+} from "./utils/dataTransformation";
 
 // todo: define type for exchangeRates and do a validation
 // https://akhtarvahid.hashnode.dev/how-to-access-local-json-file-to-react
@@ -23,8 +27,13 @@ export const flagsLoader = async (): Promise<void | string[]> => {
 export const loader = async () => {
   const exchangeRatesData = await exchangeRatesLoader();
   const flagsData = await flagsLoader();
-  return {
-    exchangeRatesData,
-    flagsData,
-  };
+
+  if (!exchangeRatesData || !flagsData) {
+    return {};
+  }
+
+  const sanitizedLoadedData = removeInvalidCurrencyData(exchangeRatesData);
+  const loadedData = mergeFlags(sanitizedLoadedData, flagsData);
+
+  return loadedData;
 };

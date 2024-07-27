@@ -1,19 +1,22 @@
-import type { Currency } from "../../../api/exchangeRates/exchangeRates.types";
+import type { CurrencyWithFlag } from "../../../api/exchangeRates/exchangeRates.types";
 import ListItem from "../../common/list-item/ListItem";
 import FlagImage from "./FlagImage";
 import LeftComponent from "./LeftComponent";
 import RightComponent from "./RightComponent";
 
 interface ExchangeRateCardProps {
-  currency: Currency;
+  currency: CurrencyWithFlag;
 }
 
-// todo: filter out items with missing name and currency
-// todo: adjust the filtration based on not just currency but also the country name
 const ExchangeRateCard = ({ currency }: ExchangeRateCardProps) => {
   return (
     <ListItem
-      ImageComponent={() => <FlagImage />}
+      ImageComponent={() => (
+        <FlagImage
+          flagPath={currency.flagPath ?? ""}
+          title={`${currency.nameI18N ?? currency.currency}`}
+        />
+      )}
       RightComponent={() => (
         <RightComponent
           countryName={currency.nameI18N ?? ""}
