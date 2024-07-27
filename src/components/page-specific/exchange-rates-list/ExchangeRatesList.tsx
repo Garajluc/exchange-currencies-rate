@@ -10,7 +10,10 @@ const ExchangeRatesList = ({ exchangeRatesData }: ExchangeRatesListProps) => {
   return (
     <List>
       {exchangeRatesData?.map((currency) => (
-        <ListItem key={currency.currency}>
+        <ListItem
+          key={currency.currency}
+          sx={{ justifyContent: "center", paddingX: 0 }}
+        >
           <ExchangeRateCard currency={currency} key={currency.currency} />
         </ListItem>
       ))}
