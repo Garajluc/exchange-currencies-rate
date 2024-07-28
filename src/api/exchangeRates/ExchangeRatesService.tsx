@@ -5,14 +5,14 @@ import {
   mergeFlags,
 } from "./utils/dataTransformation";
 
-// todo: define type for exchangeRates and do a validation
-// https://akhtarvahid.hashnode.dev/how-to-access-local-json-file-to-react
 export const exchangeRatesLoader =
   async (): Promise<void | ExchangeRatesRoot> => {
     const data = await axios
       .get("./exchange-rates-eur.json")
       .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw Error(err);
+      });
     return data;
   };
 
@@ -20,7 +20,9 @@ export const flagsLoader = async (): Promise<void | string[]> => {
   const data = await axios
     .get("./flags")
     .then((res) => res.data)
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      throw Error(err);
+    });
   return data;
 };
 
