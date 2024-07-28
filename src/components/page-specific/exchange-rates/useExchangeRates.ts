@@ -7,11 +7,13 @@ import type {
 import { useOmniListSearch } from "../../utils/useOmniSearch";
 
 interface HookReturn {
+  isLoading: boolean;
   filteredData?: CurrencyWithFlag[] | null;
   handleSearch: (value: string) => void;
 }
 
 const useExchangeRates = (): HookReturn => {
+  const [isLoading, setIsLoading] = useState(true);
   const [exchangeRates, setExchangeRates] =
     useState<ExchangeRatesRootWithFlags | null>(null);
 
@@ -19,6 +21,7 @@ const useExchangeRates = (): HookReturn => {
 
   useEffect(() => {
     setExchangeRates(loadedData);
+    setIsLoading(false);
   }, []);
 
   const { filteredData, handleSearch } = useOmniListSearch({
@@ -27,6 +30,7 @@ const useExchangeRates = (): HookReturn => {
   });
 
   return {
+    isLoading,
     filteredData,
     handleSearch,
   };

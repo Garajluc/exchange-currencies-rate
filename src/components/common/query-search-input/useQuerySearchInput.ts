@@ -26,6 +26,22 @@ const useQuerySearchInput = ({ onChange }: HookProps): HookReturn => {
     onChange(searchParam);
   }, []);
 
+  useEffect(() => {
+    if (!inputValue) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [inputValue]);
+
   return {
     inputValue,
     handleChange,

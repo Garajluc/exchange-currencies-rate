@@ -29,7 +29,7 @@ const StickyScroll = ({ children }: ElevationScrollProps) => {
   const styles = {
     paddingTop: "15px",
     paddingBottom: "15px",
-    transition: "padding-bottom 0.5s, padding-top 0.5s",
+    transition: "padding-bottom 0.3s, padding-top 0.3s",
   };
 
   return <BoxTest sx={{ ...(trigger ? styles : {}) }}>{children}</BoxTest>;
