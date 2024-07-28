@@ -18,7 +18,7 @@ export const exchangeRatesLoader =
 
 export const flagsLoader = async (): Promise<void | string[]> => {
   const data = await axios
-    .get("./flags")
+    .get("./flags.json")
     .then((res) => res.data)
     .catch((err) => {
       throw Error(err);
